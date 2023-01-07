@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
@@ -55,3 +55,8 @@ class ProfileUpdateView(UpdateView):
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     template_name = "accounts/profile_detail.html"
     model = Profile
+
+
+class AccountListView(LoginRequiredMixin, ListView):
+    template_name = "accounts/accounts_list.html"
+    model = User

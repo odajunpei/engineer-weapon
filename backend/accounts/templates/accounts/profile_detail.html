@@ -6,15 +6,27 @@
     <table>
       <tr>
         <th>ニックネーム</th>
+        {% if profile.name %}
         <td>{{ profile.name }}</td>
+        {% else %}
+        <td>未登録</td>
+        {% endif %}
       </tr>
       <tr>
         <th>電話番号</th>
+        {% if profile.tel %}
         <td>{{ profile.tel }}</td>
+        {% else %}
+        <td>未登録</td>
+        {% endif %}
       </tr>
       <tr>
         <th>プロフィール写真</th>
+        {% if profile.image %}
         <td><img src="{{ profile.image.url }}"></td>
+        {% else %}
+        <td>未登録</td>
+        {% endif %}
       </tr>
     </table>
     {% if profile.user == user %}
