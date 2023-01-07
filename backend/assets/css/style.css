@@ -704,5 +704,11 @@ input:focus :-ms-input-placeholder {
 .article .article-detail table tr th {
   width: 250px;
 }
+.article .article-detail table tr td a {
+  font-size: 2rem;
+}
+.article .article-detail table tr td a:nth-child(2) {
+  display: none;
+}
 
 /*フッター*//*# sourceMappingURL=style.css.map */

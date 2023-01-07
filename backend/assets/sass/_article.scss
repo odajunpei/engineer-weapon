@@ -123,6 +123,14 @@
         th{
           width: 250px;
         }
+        td{
+          a{
+            font-size: 2rem;
+          }
+          a:nth-child(2){
+            display: none;
+          }
+        }
       }
     }
   }

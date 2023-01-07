@@ -19,4 +19,6 @@ urlpatterns = [
     path('<int:pk>/update', views.ArticleUpdateView.as_view(), name="article_update"),
     path('<int:pk>/delete', views.ArticleDeleteView.as_view(), name="article_delete"),
     path('like/<int:article_id>', views.Like_add, name='like_add'),
+    path('favorite/', views.ArticleFavoriteListView.as_view(),
+         name="article_favorite")
 ]

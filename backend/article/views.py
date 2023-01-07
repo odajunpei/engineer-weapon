@@ -89,6 +89,8 @@ class ArticleMYListView(LoginRequiredMixin, ListView):
     template_name = "article/article_mylist.html"
     model = Article
 
+# お気に入り
+
 
 @login_required
 def Like_add(request, article_id):
@@ -101,3 +103,8 @@ def Like_add(request, article_id):
         is_like.create(article=article, user=user, favorite=True)
 
     return redirect('article:article_detail', article.id)
+
+
+class ArticleFavoriteListView(LoginRequiredMixin, ListView):
+    template_name = "article/article_favorite.html"
+    model = Like

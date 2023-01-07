@@ -8,21 +8,28 @@
         <tr>
           <th>サムネイル</th>
           <th>タイトル</th>
-          <th>作成日</th>
           <th>お気に入り登録者</th>
-          <td>コメント数</td>
           <th>作成者</th>
+          <th>作成日</th>
         </tr>
-        {% if article.release %}
+        {% for like in like_list %}
+        {% if like.user == user %}
+        {% if like.article.release %}
         <tr>
-          <td class="article-thumbnail"><a href="{% url 'article:article_detail' article.pk %}"><img
-                src="{{ article.thumbnail.url }}"></a></td>
-          <td>{{ article.title }}</td>
-          <td>{{ article.created_at }}</td>
-          <td>{{ article.article }}
+          <td class="article-thumbnail"><a href="{% url 'article:article_detail' like.article.pk %}"><img
+                src="{{ like.article.thumbnail.url }}"></a></td>
+          <td>{{ like.article.title }}</td>
+          <td>
+            {% for user in like.article.article.all %}
+            <p>{{ user.user.username }}</p>
+            {% endfor %}
           </td>
+          <td>{{ like.article.user.username }}</td>
+          <td>{{ like.article.created_at }}</td>
         </tr>
         {% endif %}
+        {% endif %}
+        {% endfor %}
       </tbody>
     </table>
   </div>

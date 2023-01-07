@@ -39,10 +39,12 @@
         <td>
           {% for like in article.article.all %}
           {% if like.article == article %}
-          <a class="btn" href="{% url 'article:like_add' article.pk %}">★</a>
+          {% if like.user == user %}
+          <a class="btn favorited" href="{% url 'article:like_add' article.pk %}">★</a>
+          {% endif %}
           {% endif %}
           {% endfor %}
-          <a class="btn" href="{% url 'article:like_add' article.pk %}">〇</a>
+          <a class="btn" href="{% url 'article:like_add' article.pk %}">☆</a>
         </td>
       </tr>
     </table>
