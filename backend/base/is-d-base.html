@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="content-type" charset="utf-8">
+    <title>社内サイトPREMIUM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <meta name="robots" content="noindex">
+
+    <!--CSS-->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <!--ress.css-->
+    <link rel="stylesheet" href="{% static 'css/ress.min.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/is-style.css' %}">
+
+    {% block CSS %}{% endblock %}
+
+    <!--fontawsome-->
+    <script src="{% static 'js/all.min.js' %}"></script>
+
+    <!--google fonts-->
+    <script>
+        WebFontConfig = { google: { families: ['Noto+Sans+JP:300,400,700', 'Noto+Serif+JP:400,700'] } };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170230527-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-170230527-1');
+    </script>
+
+</head>
+
+{% if user.is_superuser %}
+<body>
+    <section class="header">
+        <!--ヘッダー・グローバルメニュー-->
+        <header class="page-header">
+            <div class="nav-bar max-extend-narrow" id="nav-bar">
+                <div class="logo-header">
+                    <a href="{% url 'dashboard:dashboard-top' %}">
+                        <h1 class="company-name">
+                            <img class="logo-1" src="{% static 'is/common/logo-1.svg' %}" alt="ロゴ">
+                            <img class="logo_typo" src="{% static 'is/common/logo_typo_premium.svg' %}" alt="株式会社トライアド">
+                        </h1>
+                    </a>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'is_register:top' %}" class="is-dashboard-btn">サイトをみる</a>
+                    {% endif %}
+                </div>
+                <div class="toggle-hamburger open" id="toggle">
+                    <span></span>
+                    <span></span>
+                    <p>MENU</p>
+                </div>
+                <nav class="global-menu" id="global-menu">
+                    <ul class="menu-list">
+                        <li><a href="{% url 'is_register:top' %}">マイページTOP</a></li>
+                        <li><a href="{% url 'insidestory:is-list' insidestory_cat.slug %}">InsideStory</a></li>
+                        <li><a href="{% url 'gallery:event_list' %}">Gallery</a></li>
+                        <li><a href="{% url 'insidestory:is-list' ranking_cat.slug %}">成績ランキング</a></li>
+                        <li><a href="{% url 'insidestory:is-list' faq_cat.slug %}">Q&A</a></li>
+                        <li><a href="{% url 'insidestory:is-list' kenshu_cat.slug %}">研修音声</a></li>
+                        <li><a href="{% url 'insidestory:is-favorite-list' %}">お気に入り</a></li>
+                        <li><a class="nav-link" href="{% url 'is_register:logout' %}">ログアウト</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </section>
+    {% block is-content %}
+
+    {% endblock %}
+
+
+    <!-- フッター -->
+    <footer class="footer" id="footer">
+        <div class="footer-content max">
+            <div class="footer-light">
+                <p><small>&copy;2020 TRYAD Co.,Ltd.</small></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+{% endif %}
+<!--jQuery読み込み-->
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<!--ドロワーJS-->
+<script src="{% static 'js/toggle.js' %}"></script>
+
+<script>
+    $(function () {
+        let settingsList = $('#settings-list');
+        let settingsBtn = $('#settings-btn')
+        settingsBtn.on('click', function () {
+            settingsList.slideToggle(300);
+            settingsBtn.toggleClass('open')
+        });
+        let settingsList2 = $('#settings-list2');
+        let settingsBtn2 = $('#settings-btn2')
+        settingsBtn2.on('click', function () {
+            settingsList2.slideToggle(300);
+            settingsBtn2.toggleClass('open')
+        });
+        /*ウィンドウの高さを取得してメインセクションに適用*/
+        let h = $(window).height();
+        let footerHeight = $('.footer').height();
+        $('.common-h').css('min-height', h - footerHeight);
+        $('html').addClass('show');
+        //typekitフォントがロードされるまで待つ。ロードされた瞬間fadeIn
+        let visible = setInterval(function () {
+            if ($('html').hasClass('wf-active')) {
+                $('body').addClass('show');
+                clearInterval(visible)
+            }
+        }, 10)
+
+        //スマホでアニメーションが終わってからページ遷移させたい
+        let ww = $(window).width()
+        if (ww<992){
+            let a = $('a')
+            a.on('click', function (event) {
+                event.preventDefault();
+                console.log(a.index(this))
+
+                let next = a[a.index(this)].href
+                let loc = (next) => {
+                    window.location.href = next;
+                }
+                setTimeout(loc, 500, next);
+            })
+        }
+    })
+</script>
+
+{% block JS %}{% endblock %}
+
+</html>

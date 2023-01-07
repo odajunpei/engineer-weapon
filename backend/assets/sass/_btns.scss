@@ -1,0 +1,19 @@
+
+.green-btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: $green;
+  color: $white;
+  font-weight: 700;
+  text-align: center;
+  max-width: 180px;
+  width: 100%;
+  margin: 15px auto;
+  display: block;
+}
+.shikigaku-link {
+  @extend .green-btn;
+  background-color: $orange;
+  margin-right: 4px;
+  white-space: nowrap;
+}

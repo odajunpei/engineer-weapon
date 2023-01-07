@@ -1,0 +1,20 @@
+.skin-blue{
+  .main-header{
+    .logo{
+      background-color: #222d32;
+    }
+    .navbar{
+      background-color: #ecf0f5;
+      .sidebar-toggle{
+        color: #222d32;
+      }
+      .nav{
+        li{
+          a{
+            color: #222d32;
+          }
+        }
+      }
+    }
+  }
+}

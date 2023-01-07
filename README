@@ -1,0 +1,16 @@
+# 立ち上げ
+from register.models import *
+docker-compose -f docker-compose.yml -f dev-backend.yml up --build
+docker-compose - f docker-compose.yml - f dev-backend.yml up
+
+# スーパユーザ作成
+docker-compose -f docker-compose.yml -f dev-backend.yml exec backend /bin/bash
+python manage.py createsuperuser
+
+http://localhost:8000/admin
+
+#本番
+vi settings.py
+settings.pyのALLOWED_HOSTをIPアドレスにする
+http://49.212.153.160:8000/
+http://engineer-weapon.work:8000/

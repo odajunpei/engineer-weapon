@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+  <div class="article-list">
+    <table>
+      <tbody>
+        <tr>
+          <th>サムネイル</th>
+          <th>タイトル</th>
+          <th>作成日</th>
+          <th>お気に入り登録者</th>
+          <td>コメント数</td>
+          <th>作成者</th>
+        </tr>
+        {% for article in article_list %}
+        {% if article.release %}
+        <tr>
+          <td class="article-thumbnail"><a href="{% url 'article:article_detail' article.pk %}"><img
+                src="{{ article.thumbnail.url }}"></a></td>
+          <td>{{ article.title }}</td>
+          <td>{{ article.created_at }}</td>
+          <td></td>
+          <td>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

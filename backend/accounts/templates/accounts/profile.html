@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Profile</h1>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label>プロフィール写真</label>
+    <input type="file" name="image" accept="image/*" required="" id="id_image">
+  </div>
+  <div class="form-group">
+    <label>ニックネーム</label>
+    <input class="form-control" type="text" name="name" placeholder="name" value="{{user.profile.name}}">
+  </div>
+  <div class="form-group">
+    <label>郵便番号</label>
+    <input class="form-control" type="text" name="zipcode" placeholder="zipcode" value="{{user.profile.zipcode}}">
+  </div>
+  <div class="form-group">
+    <label>出身都道府県</label>
+    <input class="form-control" type="text" name="prefecture" placeholder="prefecture"
+      value="{{user.profile.prefecture}}">
+  </div>
+  <div class="form-group">
+    <label>出身市区町村</label>
+    <input class="form-control" type="text" name="city" placeholder="city" value="{{user.profile.city}}">
+  </div>
+  <div class="form-group">
+    <label>電話番号</label>
+    <input class="form-control" type="tel" name="tel" placeholder="tel" value="{{user.profile.tel}}">
+  </div>
+  <button type="submit" class="btn btn-primary">保存</button>
+</form>
+</div>
+</div>
+</div>
+
+{% endblock %}

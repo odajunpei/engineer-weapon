@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+  <div class="article-list">
+    <table>
+      <tbody>
+        <tr>
+          <th>カテゴリー名</th>
+          <th>スラッグ</th>
+          <th>操作</th>
+        </tr>
+        {% for category in category_list %}
+        <tr>
+          <td>{{ category.title }}</td>
+          <td>{{ category.slug }}</td>
+          <td>
+            <div><a href="{% url 'article:category_update' category.pk %}">編集</a></div>
+            <div><a href="{% url 'article:category_delete' category.pk %}">削除</a></div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% endblock %}

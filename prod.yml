@@ -1,0 +1,38 @@
+version: "3"
+services:
+  backend:
+    build: ./backend
+    command: bash -c "python manage.py migrate && python manage.py collectstatic --no-input --clear && python manage.py crontab add && cron start && gunicorn --workers 3  --bind  0.0.0.0:8000 project.wsgi:application"
+    expose:
+      - "8000"
+    volumes:
+      - static:/code/static_root
+      - media:/code/media
+    environment:
+      - DEBUG=0
+    depends_on:
+      - db
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAINS: ""
+      STAGE: "production"
+      # FORCE_RENEW: 'true'
+      CLIENT_MAX_BODY_SIZE: 100M
+    volumes:
+      - ./nginx_conf/engineer-weapon.work.ssl.conf.erb:/var/lib/nginx-conf/engineer-weapon.work.ssl.conf.erb:ro
+      - static:/code/static_root
+      - media:/code/media
+      - https-portal-data:/var/lib/https-portal # ここを書いていなかった(これでSSL証明書の再取得を回避できる？)
+    depends_on:
+      - backend
+
+volumes: # ここを書いていなかった
+  https-portal-data: # ここを書いていなかった(これでSSL証明書の再取得を回避できる？)
+  static:
+  media:
+  pgdata:

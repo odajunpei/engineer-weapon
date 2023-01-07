@@ -1,0 +1,14 @@
+media
+static
+db.sqlite3
+is_register/__pycache__
+insidestory/__pycache__
+is_register/migrations/__pycache__
+insidestory/migrations/__pycache__
+assets/node_modules
+project/__pycache__
+dashboard/__pycache__
+dashboard/migrations/__pycache__
+register/__pycache__
+register/migrations/__pycache__
+project/environ.py

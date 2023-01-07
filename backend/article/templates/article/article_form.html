@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+  <div class="article-form">
+    <form method="POST" class="is-form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        <tbody>
+          <tr>
+            <td><input type="hidden" name="user" value="{{ user.pk }}" id="id_user" readonly></td>
+          </tr>
+          <tr>
+            <th><label>カテゴリー</label></th>
+            <td>{{ form.category }}</td>
+          </tr>
+          <tr>
+            <th><label>記事タイトル</label></th>
+            <td>{{ form.title }}</td>
+          </tr>
+          <tr>
+            <th><label>サムネイル</label></th>
+            <td>{{ form.thumbnail }}</td>
+          </tr>
+          <tr>
+            <th><label>参考url1</label></th>
+            <td>{{ form.url1 }}</td>
+          </tr>
+          <tr>
+            <th><label>参考url2</label></th>
+            <td>{{ form.url2 }}</td>
+          </tr>
+          <tr>
+            <th><label>参考url3</label></th>
+            <td>{{ form.url3 }}</td>
+          </tr>
+          <tr>
+            <th><label>本文</label></th>
+            <td>{{ form.body }}</td>
+          </tr>
+          <tr>
+            <th><label>表示順</label></th>
+            <td>{{ form.order }}</td>
+          </tr>
+          <tr>
+            <th><label>公開する</label></th>
+            <td>{{ form.release }}</td>
+          </tr>
+          <tr>
+            <th><label>投稿日</label></th>
+            <td>{{ form.created_at }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="submit-btn">送信</button>
+    </form>
+    <a href="#" class="back-btn" onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</div>
+{% endblock %}

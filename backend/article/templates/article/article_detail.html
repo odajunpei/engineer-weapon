@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+  <div class="article-detail">
+    <p class="left">{{ article.created_at }}</p>
+    <h1 class="title">{{ article.title }}</h1>
+    <div class="category-list">
+      <span>カテゴリー</span>
+      {% for category in article.category.all %}
+      <span>{{ category.title }}, </span>
+      {% endfor %}
+    </div>
+    <table>
+      {% if article.url1 %}
+      <tr>
+        <th>参考ページ1</th>
+        <td><a href="{{ article.url1 }}">{{ article.url1 }}</a></td>
+      </tr>
+      {% endif %}
+      {% if article.url2 %}
+      <tr>
+        <th>参考ページ2</th>
+        <td><a href="{{ article.url2 }}">{{ article.url2 }}</a></td>
+      </tr>
+      {% endif %}
+      {% if article.url3 %}
+      <tr>
+        <th>参考ページ3</th>
+        <td><a href="{{ article.url3 }}">{{ article.url3 }}</a></td>
+      </tr>
+      {% endif %}
+      <tr>
+        <th>説明</th>
+        <td>{{ article.body | safe }}</td>
+      </tr>
+      <tr>
+        <th>お気に入り登録</th>
+        <td>
+          {% for like in article.article.all %}
+          {% if like.article == article %}
+          <a class="btn" href="{% url 'article:like_add' article.pk %}">★</a>
+          {% endif %}
+          {% endfor %}
+          <a class="btn" href="{% url 'article:like_add' article.pk %}">〇</a>
+        </td>
+      </tr>
+    </table>
+    {% if article.user == user %}
+    <div class="flex">
+      <div><a href="{% url 'article:article_update' article.pk %}">編集</a></div>
+      <div><a href="{% url 'article:article_delete' article.pk %}">削除</a></div>
+    </div>
+    {% endif %}
+    <a href="#" class="" style="display:block; text-align: center; margin-top: 40px;"
+      onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</div>
+{% endblock %}

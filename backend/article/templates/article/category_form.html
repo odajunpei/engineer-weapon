@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+  <div class="article-form">
+    <form method="POST" class="is-form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        <tbody>
+          <tr>
+            <th><label>カテゴリー名</label></th>
+            <td>{{ form.title }}</td>
+          </tr>
+          <tr>
+            <th><label>スラッグ</label></th>
+            <td>{{ form.slug }}</td>
+          </tr>
+          <tr>
+            <th>公開</th>
+            <td>{{ form.release }}</td>
+          </tr>
+          <tr>
+            <th>公開</th>
+            <td>{{ form.order }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="is-btn">送信</button>
+    </form>
+    <a href="#" class="back-btn" onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</div>
+{% endblock %}

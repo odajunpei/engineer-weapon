@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+  <div class="article-detail">
+    <table>
+      <tr>
+        <th>ニックネーム</th>
+        <td>{{ profile.name }}</td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td>{{ profile.tel }}</td>
+      </tr>
+      <tr>
+        <th>プロフィール写真</th>
+        <td><img src="{{ profile.image.url }}"></td>
+      </tr>
+    </table>
+    {% if profile.user == user %}
+    <div class="flex">
+      <div><a href="{% url 'accounts:profile' user.pk %}">編集</a></div>
+    </div>
+    {% endif %}
+    <a href="#" class="" style="display:block; text-align: center; margin-top: 40px;"
+      onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</div>
+{% endblock %}
