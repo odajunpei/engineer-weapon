@@ -33,6 +33,7 @@ SECRET_KEY = 'j1kwd_o_a=hubuwmh)1e*5%h!jv&9_a&m00fq&0g#g37+0_#q*'
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'article',
+    'contact',
     'studytime',
     'markdownx',
     'django.contrib.admin',
@@ -176,7 +177,7 @@ LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '../../accounts/profile'
 LOGOUT_REDIRECT_URL = "/"
 # メールをコンソールに表示する
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 FILE_UPLOAD_PERMISSIONS = 0o644
 
@@ -277,3 +278,9 @@ if DEBUG:
     #     # django.contrib.auth) you may enable sending PII data.
     #     send_default_pii=True
     # )
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.lolipop.jp'
+EMAIL_HOST_USER = 'contact@junpei-create.com'
+EMAIL_HOST_PASSWORD = 'uuc6MGAwURTfgT-'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

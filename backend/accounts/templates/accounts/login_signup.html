@@ -42,9 +42,11 @@
     {% if 'login' in request.path %}
     <input type="submit" name="Login" value="Login" class="login-submit" />
     <p style="text-align: center;"><a href="{% url 'accounts:signup' %}" style="color: #fff;">SignUp?</a></p>
+    <p style="text-align: center;"><a href="{% url 'contact:contact_form' %}" style="color: #fff;">Contact?</a></p>
     {% elif 'signup' in request.path %}
     <input type="submit" name="SignUp" value="SignUp" class="login-submit" />
     <p style="text-align: center;"><a href="{% url 'accounts:login' %}" style="color: #fff;">Login?</a></p>
+    <p style="text-align: center;"><a href="{% url 'contact:contact_form' %}" style="color: #fff;">Contact?</a></p>
     {% endif %}
   </form>
   <div class="underlay-photo"></div>
