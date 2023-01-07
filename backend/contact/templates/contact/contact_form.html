@@ -21,12 +21,16 @@
 </head>
 
 <body class="login">
-  <form action="{% url 'contact:contact_form' %}" method="post">
+  <form action="{% url 'contact:contact_form' %}" method="post" class="login-form">
+    <h1 style="color: #fff;">Contact</h1>
     {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table><br>
-    <input type="submit" value="送信">
+    <input type="text" name="subject" class="login-username" id="id_username" autofocus="true" required="true"
+      placeholder="題名" />
+    <input type="email" class="login-username" name="sender" placeholder="Email" required>
+    <input type="text" name="message" class="login-username" id="id_username" autofocus="true" required="true"
+      placeholder="内容" />
+    <input type="hidden" name="myself" id="id_myself" class="login-username">
+    <input type="submit" name="contact" value="送信" class="login-submit" />
   </form>
   <div class="underlay-photo"></div>
   <div class="underlay-black"></div>

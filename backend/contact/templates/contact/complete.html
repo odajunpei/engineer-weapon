@@ -21,7 +21,13 @@
 </head>
 
 <body class="login">
-  <h1>topへ</h1>
+  <div class="login-form">
+    <h1 style="color: #fff;">Complete</h1>
+    <p style="color: #fff;">お問い合わせを受付ました。<br>
+      3日以内にご返信させていただきますので、<br>
+      今しばらくお待ちください。</p>
+    <p><a href="{% url 'accounts:login' %}" style="color: #fff;">Loginへ</a></p>
+  </div>
   <div class="underlay-photo"></div>
   <div class="underlay-black"></div>
 </body>
