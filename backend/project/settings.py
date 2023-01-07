@@ -174,7 +174,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 # ログインページと、直接ログインページへ行った後のリダイレクトページ
 LOGIN_URL = 'accounts/login'
-LOGIN_REDIRECT_URL = '../../accounts/profile'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = "/"
 # メールをコンソールに表示する
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
