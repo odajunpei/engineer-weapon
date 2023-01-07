@@ -24,12 +24,14 @@
   <form action="{% url 'contact:contact_form' %}" method="post" class="login-form">
     <h1 style="color: #fff;">Contact</h1>
     {% csrf_token %}
+    <input type="text" name="username" class="login-username" id="id_username" autofocus="true" required="true"
+      placeholder="氏名" />
+    <input type="email" class="login-username" name="sender" placeholder="Email" required>
+    <input type="tel" class="login-username" name="tel" placeholder="tel" required>
     <input type="text" name="subject" class="login-username" id="id_username" autofocus="true" required="true"
       placeholder="題名" />
-    <input type="email" class="login-username" name="sender" placeholder="Email" required>
-    <input type="text" name="message" class="login-username" id="id_username" autofocus="true" required="true"
-      placeholder="内容" />
-    <input type="hidden" name="myself" id="id_myself" class="login-username">
+    <textarea type="text" name="message" class="login-username" id="id_message" autofocus="true" required="true"
+      row='10' placeholder="内容" style="height: 120px;" /></textarea>
     <input type="submit" name="contact" value="送信" class="login-submit" />
   </form>
   <div class="underlay-photo"></div>
