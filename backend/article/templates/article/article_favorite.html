@@ -21,10 +21,11 @@
           <td>{{ like.article.title }}</td>
           <td>
             {% for user in like.article.article.all %}
-            <p>{{ user.user.username }}</p>
+            <p><a href="{% url 'accounts:profile_detail' user.user.pk %}">{{ user.user.username }}</a></p>
             {% endfor %}
           </td>
-          <td>{{ like.article.user.username }}</td>
+          <td><a href="{% url 'accounts:profile_detail' like.article.user.pk %}">{{ like.article.user.username }}</a>
+          </td>
           <td>{{ like.article.created_at }}</td>
         </tr>
         {% endif %}
