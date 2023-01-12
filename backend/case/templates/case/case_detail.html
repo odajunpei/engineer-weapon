@@ -8,7 +8,11 @@
 <div class="article">
   <div class="article-detail">
     <p class="left">{{ case.created_at }}</p>
+    {% if case.shop %}
     <p class="left">{{ case.shop }}</p>
+    {% else %}
+    未登録
+    {% endif %}
     <h1 class="title">{{ case.title }}</h1>
     <div class="category-list">
       <p>完了ステータス</p>
@@ -25,7 +29,11 @@
       {% endif %}
       <tr>
         <th>要件</th>
+        {% if case.body %}
         <td>{{ case.body | safe }}</td>
+        {% else %}
+        未登録
+        {% endif %}
       </tr>
       <tr>
         <th></th>
@@ -52,7 +60,7 @@
             {% if detail.release %}
             <tr>
               <td><a href="{% url 'case:detail_detail' detail.pk %}">{{ detail.title }}</a></td>
-              <td>{{ detail.status }}</td>
+              <td>{% if detail.status %}{{ detail.status }}{% else %}未登録{% endif %}</td>
               <td>{{ detail.created_at }}</td>
               <td>{{ detail.updated_at }}</td>
               <td>{{ detail.user.username }}</td>

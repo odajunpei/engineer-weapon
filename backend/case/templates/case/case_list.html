@@ -19,8 +19,14 @@
         {% for case in case_list %}
         {% if case.release %}
         <tr>
+          {% if case.shop %}
           <td><a href="{% url 'case:shop_list' case.shop.pk %}">{{ case.shop }}</a></td>
+          {% else %}
+          未登録
+          {% endif %}
+          {% if case.title %}
           <td><a href="{% url 'case:case_detail' case.pk %}">{{ case.title }}</a></td>
+          {% endif %}
           <td>
             <div class="category-list">
               {% for status in case.status.all %}
