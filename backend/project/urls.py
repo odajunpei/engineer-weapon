@@ -32,6 +32,7 @@ urlpatterns = [
     path('studytime/', include('studytime.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('contact/', include('contact.urls')),
+    path('case/', include('case.urls')),
 ]
 
 # 開発環境時のみ、Djangoアプリケーション側でメディアファイルを配信する。

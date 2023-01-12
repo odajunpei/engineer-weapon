@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page-title %}
+進捗詳細
+<small>{{ detail.title }}</small>
+{% endblock %}
+{% block content %}
+<div class="article">
+  <div class="article-detail">
+    <p class="left">{{ detail.created_at }}</p>
+    <p class="left">{{ detail.user.username }}</p>
+    <h1 class="title">{{ detail.title }}</h1>
+    <p class="">{{ detail.status }}</p>
+    <p>{{ detail.body | safe }}</p>
+    {% if detail.user == user %}
+    <div class="flex">
+      <div><a href="{% url 'case:detail_update' detail.pk %}">進捗投稿編集</a></div>
+      <div><a href="{% url 'case:detail_delete' detail.pk %}">進捗投稿削除</a></div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

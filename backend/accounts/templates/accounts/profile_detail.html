@@ -1,5 +1,9 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% block page-title %}
+プロフィール詳細
+<small>{{ profile.user.username }}</small>
+{% endblock %}
 {% block content %}
 <div class="article">
   <div class="article-detail">

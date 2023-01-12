@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block page-title %}
+{% if profile %}
+プロフィール更新
+{% else %}
+プロフィール登録
+{% endif %}
+<small>{{ user.username }}</small>
+{% endblock %}
 {% block content %}
 <h1>Profile</h1>
 <form method="POST" enctype="multipart/form-data">

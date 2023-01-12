@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'article',
     'contact',
+    'case',
     'studytime',
     'markdownx',
     'django.contrib.admin',
@@ -213,17 +214,7 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
-    # 'axes_cache': {
-    #     'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    # }
 }
-# AXES_CACHE = 'axes'
-# AXES_FAILURE_LIMIT = 15  # ログイン失敗10回まで
-# AXES_COOLOFF_TIME = 24  # ログインを連続で失敗した場合は24時間アカウントがロック
-
-# AXES_META_PRECEDENCE_ORDER = (
-#     'HTTP_X_FORWARDED_FOR',
-# )
 
 if DEBUG:
     INTERNAL_IPS = ['127.0.0.1']
@@ -243,41 +234,6 @@ if DEBUG:
         'debug_toolbar.panels.logging.LoggingPanel',
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ]
-
-# 本番環境はS3で配信
-# if not DEBUG:
-#     # 共通の設定
-#     AWS_ACCESS_KEY_ID = 'AKIA5EA3TRWW4MPE5T7V'
-#     AWS_SECRET_ACCESS_KEY = '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'
-#     AWS_STORAGE_BUCKET_NAME = 'tryad-portal-s3'
-#     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-#     AWS_S3_OBJECT_PARAMETERS = {
-#         'CacheControl': 'max-age=86400',  # 1日はそのキャッシュを使う
-#     }
-
-#     # 静的ファイルの設定
-#     AWS_LOCATION = 'static'
-#     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-#     # djangoからの保存を基本、パブリック公開にする
-#     AWS_DEFAULT_ACL = 'public-read'
-
-#     # メディアファイルの設定。今回は「project」というプロジェクト名の例
-#     DEFAULT_FILE_STORAGE = 'project.backends.MediaStorage'
-
-    # 本番はsentry使う
-    # import sentry_sdk
-    # from sentry_sdk.integrations.django import DjangoIntegration
-
-    # sentry_sdk.init(
-    #     dsn="https://861304876725473aaa551c6d6c6cb050@o486824.ingest.sentry.io/5631086",
-    #     integrations=[DjangoIntegration()],
-    #     traces_sample_rate=1.0,
-
-    #     # If you wish to associate users to errors (assuming you are using
-    #     # django.contrib.auth) you may enable sending PII data.
-    #     send_default_pii=True
-    # )
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.lolipop.jp'
 EMAIL_HOST_USER = 'contact@junpei-create.com'

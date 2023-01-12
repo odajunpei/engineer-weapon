@@ -1,5 +1,13 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% block page-title %}
+{% if category %}
+カテゴリ更新
+{% else %}
+カテゴリ作成
+{% endif %}
+<small>{{ category.title }}</small>
+{% endblock %}
 {% block content %}
 <div class="article">
   <div class="article-form">

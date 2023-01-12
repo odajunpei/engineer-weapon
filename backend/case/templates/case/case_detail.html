@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page-title %}
+案件詳細
+<small>{{ case.title }}</small>
+{% endblock %}
+{% block content %}
+<div class="article">
+  <div class="article-detail">
+    <p class="left">{{ case.created_at }}</p>
+    <p class="left">{{ case.shop }}</p>
+    <h1 class="title">{{ case.title }}</h1>
+    <div class="category-list">
+      <p>完了ステータス</p>
+      {% for status in case.status.all %}
+      <span>{{ status.name }}, </span>
+      {% endfor %}
+    </div>
+    <table>
+      {% if case.url1 %}
+      <tr>
+        <th>テストurl</th>
+        <td><a href="{{ case.url1 }}">{{ case.url1 }}</a></td>
+      </tr>
+      {% endif %}
+      <tr>
+        <th>要件</th>
+        <td>{{ case.body | safe }}</td>
+      </tr>
+      <tr>
+        <th></th>
+      </tr>
+    </table>
+    {% if case.user == user %}
+    <div class="flex">
+      <div><a href="{% url 'case:case_update' case.pk %}">案件編集</a></div>
+      <div><a href="{% url 'case:case_delete' case.pk %}">案件削除</a></div>
+    </div>
+    {% endif %}
+    <div class="detail-list">
+      <div class="article-list">
+        <table>
+          <tbody>
+            <tr>
+              <th>進捗タイトル</th>
+              <th>ステータス</th>
+              <th>作成日</th>
+              <th>更新日</th>
+              <th>担当者</th>
+            </tr>
+            {% for detail in case.detail_case.all %}
+            {% if detail.release %}
+            <tr>
+              <td><a href="{% url 'case:detail_detail' detail.pk %}">{{ detail.title }}</a></td>
+              <td>{{ detail.status }}</td>
+              <td>{{ detail.created_at }}</td>
+              <td>{{ detail.updated_at }}</td>
+              <td>{{ detail.user.username }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <a href="{% url 'case:detail_create' case.pk %}">詳細追加</a>
+      </div>
+    </div>
+    <a href="#" class="" style="display:block; text-align: center; margin-top: 40px;"
+      onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</div>
+{% endblock %}

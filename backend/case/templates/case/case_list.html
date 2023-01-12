@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page-title %}
+案件一覧
+<small></small>
+{% endblock %}
+{% block content %}
+<div class="article">
+  <div class="article-list">
+    <table>
+      <tbody>
+        <tr>
+          <th>取引先</th>
+          <th>案件名</th>
+          <th>ステータス</th>
+          <th>作成日</th>
+          <th>更新日</th>
+        </tr>
+        {% for case in case_list %}
+        {% if case.release %}
+        <tr>
+          <td><a href="{% url 'case:shop_list' case.shop.pk %}">{{ case.shop }}</a></td>
+          <td><a href="{% url 'case:case_detail' case.pk %}">{{ case.title }}</a></td>
+          <td>
+            <div class="category-list">
+              {% for status in case.status.all %}
+              <p>{{ status.name }}</p>
+              {% endfor %}
+            </div>
+          </td>
+          <td>{{ case.created_at }}</td>
+          <td>{{ case.updated_at }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

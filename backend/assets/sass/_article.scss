@@ -34,31 +34,40 @@
       width: 100%;
         tr{
           margin: 20px;
-        th{
-          width: 250px;
-        }
-        td{
-          width: calc(100% - 250px);
-          ul{
-            width: 90%;
-            margin-block-start: 0;
-            margin-block-end: 0;
-            padding-inline-start: 0px;
-            li{
-              list-style: none;
-              width: 100%;
+          th{
+            width: 250px;
+          }
+          td{
+            width: calc(100% - 250px);
+            ul{
+              width: 90%;
+              margin-block-start: 0;
+              margin-block-end: 0;
+              padding-inline-start: 0px;
+              li{
+                list-style: none;
+                width: 100%;
+              }
+            }
+            select,
+            textarea,
+            input{
+              width: 90%;
+              padding: 10px;
+            }
+            #id-release{
+              text-align: left;
             }
           }
-          select,
-          textarea,
-          input{
-            width: 90%;
-            padding: 10px;
+          .checkbox{
+            ul{
+              display: block;
+              margin:auto;
+              li{
+                width: fit-content;
+              }
+            }
           }
-          #id-release{
-            text-align: left;
-          }
-        }
       }
     }
   }
@@ -134,4 +143,7 @@
       }
     }
   }
+}
+.detail-list{
+  margin-top: 30px;
 }

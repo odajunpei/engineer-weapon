@@ -362,6 +362,22 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="active treeview">
             <a href="#">
+              <i class="fa fa-dashboard"></i><span>案件</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{% url 'case:case_list' %}"><i class="fa fa-circle-o"></i>案件一覧</a>
+              </li>
+              <li><a href="{% url 'case:case_create' %}"><i class="fa fa-circle-o"></i>案件投稿</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="active treeview">
+            <a href="#">
               <i class="fa fa-dashboard"></i><span>記事</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -404,8 +420,8 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Dashboard
-          <small>Control panel</small>
+          {% block page-title %}
+          {% endblock %}
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

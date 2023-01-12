@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page-title %}
+{% if detail %}
+進捗投稿更新
+{% else %}
+進捗投稿作成
+{% endif %}
+<small></small>
+{% endblock %}
+{% block content %}
+<div class="article">
+  <div class="article-form">
+    <form method="POST" class="is-form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        <tbody>
+          <tr>{{ form.errors }}</tr>
+          <tr>
+            <th><label>ステータス</label></th>
+            <td class="checkbox">{{ form.status }}</td>
+          </tr>
+          <tr>
+            <th><label>タイトル</label></th>
+            <td>{{ form.title }}</td>
+          </tr>
+          <tr>
+            <th><label>本文</label></th>
+            <td>{{ form.body }}</td>
+          </tr>
+          <tr>
+            <th><label>公開する</label></th>
+            <td>{{ form.release }}</td>
+          </tr>
+          <tr>
+            <th><label>投稿日</label></th>
+            <td>{{ form.created_at }}</td>
+          </tr>
+          <tr>
+            <th><label>更新日</label></th>
+            <td>{{ form.updated_at }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="submit-btn">送信</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

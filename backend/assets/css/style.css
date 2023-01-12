@@ -640,6 +640,15 @@ input:focus :-ms-input-placeholder {
 .article .article-form table tr td #id-release {
   text-align: left;
 }
+.article .article-form table tr .checkbox ul {
+  display: block;
+  margin: auto;
+}
+.article .article-form table tr .checkbox ul li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .article .category-form {
   text-align: center;
   margin: auto;
@@ -709,6 +718,10 @@ input:focus :-ms-input-placeholder {
 }
 .article .article-detail table tr td a:nth-child(2) {
   display: none;
+}
+
+.detail-list {
+  margin-top: 30px;
 }
 
 /*フッター*//*# sourceMappingURL=style.css.map */
