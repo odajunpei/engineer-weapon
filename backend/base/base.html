@@ -44,7 +44,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <script src="https://kit.fontawesome.com/fa25aaac30.js" crossorigin="anonymous"></script>
   <!-- Google Font -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -245,22 +245,22 @@
             </li>
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {% if user.profile.image %}
                 <img src="{{ user.profile.image }}" class="user-image" alt="User Image">
                 {% endif %}
-                <span class="hidden-xs">Alexander Pierce</span>
-              </a>
+                <!-- <span class="hidden-xs">Alexander Pierce</span> -->
+              <!-- </a> -->
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                   {% if user.profile.image %}
                   <img src="{{ user.profile.image }}" class="user-image" alt="User Image">
                   {% endif %}
-                  <p>
+                  <!-- <p>
                     Alexander Pierce - Web Developer
                     <small>Member since Nov. 2012</small>
-                  </p>
+                  </p> -->
                 </li>
                 <!-- Menu Body -->
                 <li class="user-body">
@@ -303,16 +303,16 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            {% if user.profile.image %}
+            <!-- {% if user.profile.image %}
             <img src="{{ user.profile.image }}" class="user-image" alt="User Image">
             {% else %}
             <img src="img/common/no-image.png" class="user-image" alt="User Image">
-            {% endif %}
+            {% endif %} -->
           </div>
-          <div class="pull-left info">
+          <!-- <div class="pull-left info">
             <p>Alexander Pierce</p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div>
+          </div> -->
         </div>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
@@ -331,7 +331,7 @@
           <li class="header">MAIN NAVIGATION</li>
           <li class="active treeview">
             <a href="#">
-              <i class="fa fa-dashboard"></i> <span>ユーザー(管理者)</span>
+              <i class="fa fa-sharp fa-solid fa-users"></i><span>ユーザー(管理者)</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -345,7 +345,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="active treeview">
             <a href="#">
-              <i class="fa fa-dashboard"></i> <span>記事カテゴリ(管理者)</span>
+              <i class="fa fa-solid fa-filter"></i> <span>記事カテゴリ(管理者)</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -362,7 +362,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="active treeview">
             <a href="#">
-              <i class="fa fa-dashboard"></i><span>案件</span>
+              <i class="fa fa-solid fa-desktop"></i></i><span>案件</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -378,7 +378,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="active treeview">
             <a href="#">
-              <i class="fa fa-dashboard"></i><span>記事</span>
+              <i class="fa fa-solid fa-newspaper"></i><span>記事</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

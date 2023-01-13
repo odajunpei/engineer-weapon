@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'contact',
     'case',
     'studytime',
+    'nippo',
     'markdownx',
     'django.contrib.admin',
     'django.contrib.auth',
