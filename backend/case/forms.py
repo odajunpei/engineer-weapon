@@ -16,8 +16,7 @@ class CaseForm(forms.ModelForm):
 class DetailForm(forms.ModelForm):
     class Meta:
         model = Detail
-        fields = ('status', 'title', 'body', 'release',
-                  'created_at', 'updated_at')
+        fields = ('status', 'title', 'body', 'release')
         widgets = {
             'body': SummernoteWidget(),
         }

@@ -2,7 +2,7 @@
 {% load static %}
 {% block page-title %}
 日報
-<small>みんなの日報</small>
+<small>自分の日報</small>
 {% endblock %}
 {% block content %}
 <div class="article">
@@ -16,6 +16,7 @@
           <th>更新日</th>
         </tr>
         {% for nippo in nippo_list %}
+        {% if nippo.user == user %}
         <tr>
           <td class="article-thumbnail">
             <a href="">
@@ -30,6 +31,7 @@
           <td>{{ nippo.created_at }}</td>
           <td>{{ nippo.updated_at }}</td>
         </tr>
+        {% endif %}
         {% endfor %}
       </tbody>
     </table>

@@ -397,6 +397,24 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="active treeview">
             <a href="#">
+              <i class="fa fa-dashboard"></i> <span>日報</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{% url 'nippo:nippo_list' %}"><i class="fa fa-circle-o"></i> みんなの日報</a>
+              </li>
+              <li><a href="{% url 'nippo:nippo_mylist' %}"><i class="fa fa-circle-o"></i>自分の日報</a>
+              </li>
+              <li><a href="{% url 'nippo:nippo_form' %}"><i class="fa fa-circle-o"></i>日報投稿</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="active treeview">
+            <a href="#">
               <i class="fa fa-dashboard"></i> <span>アカウント</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

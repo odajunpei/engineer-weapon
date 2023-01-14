@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page-title %}
+日報詳細
+<small>{{ nippo.created_at }}({{ nippo.user.username }})</small>
+{% endblock %}
+{% block content %}
+<div class="article">
+  <div class="article-list">
+    <h1 class="title">{{ nippo.title }}</h1>
+    <div class="category-list">
+      <table>
+        <thead>
+          <th>時間</th>
+          <th>予定</th>
+          <th>実績</th>
+        </thead>
+        <tbody>
+          {% for nippo_detail in nippo.nippo_detail.all %}
+          <tr>
+            <td>{{ nippo_detail.time }}</td>
+            <td>{{ nippo_detail.plan }}</td>
+            <td>{{ nippo_detail.actual }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if nippo.user == user %}
+    <a href="{% url 'nippo:nippo_update' nippo.pk %}"
+      style="display:block; text-align: center; margin-top: 40px;">編集</a>
+    {% endif %}
+    <a href="#" class="" style="display:block; text-align: center;"
+      onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</div>
+{% endblock %}

@@ -5,44 +5,40 @@
 <small></small>
 {% endblock %}
 {% block content %}
-<form action="" method="post" enctype="multipart/form-data">
-  <h2>日報</h2>
-  <table>
-    <tr>
-      <th>タイトル</th>
-      <td>{{ form.title }}</td>
-    </tr>
-    <tr>
-      <th>日時</th>
-      <td>{{ form.date }}</td>
-    </tr>
-    <tr>
-      <th>編集日</th>
-      <td>{{ form.updated_at }}</td>
-    </tr>
-  </table>
-  <table>
-    <thead>
-      <th>時間</th>
-      <th>予定</th>
-      <th>実績</th>
-    </thead>
-    <tbody>
-      {{ formset.management_form }}
-      {% for file_form in formset %}
-      <tr>
-        <th>{{ file_form.time }}</th>
-        <td>{{ file_form.plan }}</td>
-        <td>{{ file_form.actual }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <hr>
-
-
-  {% csrf_token %}
-  <button type="submit" class="btn btn-primary">送信</button>
-</form>
+<div class="article">
+  <div class="article-form">
+    <form action="" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <th>タイトル</th>
+          <td>{{ form.title }}</td>
+        </tr>
+        <tr>
+          <th>日時</th>
+          <td>{{ form.date }}</td>
+        </tr>
+      </table>
+      <table>
+        <thead>
+          <th>時間</th>
+          <th>予定</th>
+          <th>実績</th>
+        </thead>
+        <tbody>
+          {{ formset.management_form }}
+          {% for file_form in formset %}
+          {{ file_form.errors }}
+          <tr>
+            <th>{{ file_form.time }}</th>
+            <td>{{ file_form.plan }}</td>
+            <td>{{ file_form.actual }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

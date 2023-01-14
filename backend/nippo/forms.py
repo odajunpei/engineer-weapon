@@ -5,24 +5,23 @@ from .models import NippoDetail, Nippo
 class NippoCreateForm(forms.ModelForm):
     class Meta:
         model = Nippo
-        fields = ('title', 'date', 'updated_at')
+        fields = '__all__'
 
 
-class NippoDetailCreateForm(forms.ModelForm):
+# class NippoDetailCreateForm(forms.ModelForm):
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     for field in self.fields.values():
-    #         field.widget.attrs['class'] = 'form-control'
+#     # def __init__(self, *args, **kwargs):
+#     #     super().__init__(*args, **kwargs)
+#     #     for field in self.fields.values():
+#     #         field.widget.attrs['class'] = 'form-control'
 
-    class Meta:
-        model = NippoDetail
-        fields = ('plan', 'actual', 'time')
-
-        widgets = {
-            'plan': forms.Textarea(attrs={'rows': 4, 'cols': 10}),
-            'actual': forms.Textarea(attrs={'rows': 4, 'cols': 10}),
-        }
+#     class Meta:
+#         model = NippoDetail
+#         fields = ('plan', 'actual', 'time')
+#         widgets = {
+#             'plan': forms.Textarea(attrs={'rows': 4, 'cols': 10}),
+#             'actual': forms.Textarea(attrs={'rows': 4, 'cols': 10}),
+#         }
 
 
 FileFormset = forms.inlineformset_factory(

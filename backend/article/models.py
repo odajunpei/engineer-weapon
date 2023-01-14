@@ -47,7 +47,8 @@ class Article(models.Model):
     release = models.BooleanField(default=True, verbose_name='公開する')
     order = models.PositiveIntegerField(
         default=1, null=False, blank=False, verbose_name='表示順')
-    created_at = models.DateTimeField('投稿日', default=timezone.now)
+    created_at = models.DateTimeField('投稿日', auto_now_add=True)
+    updated_at = models.DateTimeField('更新日', auto_now=True)
 
     def __str__(self):
         return self.title

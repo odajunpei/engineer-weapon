@@ -31,8 +31,8 @@ class Case(models.Model):
     title = models.CharField('案件名', max_length=30)
     body = models.TextField('説明', blank=True, null=True, max_length=1500)
     release = models.BooleanField(default=True, verbose_name='公開する')
-    created_at = models.DateTimeField('投稿日', default=timezone.now)
-    updated_at = models.DateTimeField('更新日', default=timezone.now)
+    created_at = models.DateTimeField('投稿日', auto_now_add=True)
+    updated_at = models.DateTimeField('更新日', auto_now=True)
     status = models.ManyToManyField(
         Status, verbose_name="ステータス", related_name="case_status", null=True, blank=True
     )
@@ -60,8 +60,8 @@ class Detail(models.Model):
         Status, verbose_name="ステータス", related_name="detail_status", on_delete=models.PROTECT, null=True, blank=True
     )
     release = models.BooleanField(default=True, verbose_name='公開する')
-    created_at = models.DateTimeField('投稿日', default=timezone.now)
-    updated_at = models.DateTimeField('更新日', default=timezone.now)
+    created_at = models.DateTimeField('投稿日', auto_now_add=True)
+    updated_at = models.DateTimeField('更新日', auto_now=True)
 
     def __str__(self):
         return self.title

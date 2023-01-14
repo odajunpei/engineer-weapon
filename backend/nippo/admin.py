@@ -2,7 +2,7 @@ from django.contrib import admin
 from nippo.models import *
 
 
-class NippoDetailInline(admin.TabularInline):
+class NippoDetailInline(admin.StackedInline):
     model = NippoDetail
     extra = 8
 

@@ -13,7 +13,7 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ('user', 'title', 'thumbnail', 'category', 'url1', 'url2',
-                  'url3', 'body', 'release', 'order', 'created_at')
+                  'url3', 'body', 'release', 'order')
         widgets = {
             'category': forms.CheckboxSelectMultiple,
             'body': SummernoteWidget(),

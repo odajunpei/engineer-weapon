@@ -1,5 +1,15 @@
 from django.shortcuts import render, redirect
 from .forms import FileFormset, NippoCreateForm
+import os
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Nippo, NippoDetail, Time
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+User = get_user_model
 
 
 def nippo(request):
@@ -7,8 +17,9 @@ def nippo(request):
     context = {'form': form}
     if request.method == 'POST' and form.is_valid():
         post = form.save(commit=False)
+        post.user = request.user
         # 今回はファイルなのでrequest.FILESが必要
-        formset = FileFormset(request.POST, files=request.FILES, instance=post)
+        formset = FileFormset(request.POST, instance=post)
         if formset.is_valid():
             post.save()
             formset.save()
@@ -26,20 +37,34 @@ def nippo(request):
     return render(request, 'nippo/nippo_form.html', context)
 
 
-def update_post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    form = PostCreateForm(request.POST or None, instance=post)
-    formset = FileFormset(request.POST or None,
-                          files=request.FILES or None, instance=post)
+def update(request, pk):
+    post = get_object_or_404(Nippo, pk=pk)
+    form = NippoCreateForm(request.POST or None, instance=post)
+    formset = FileFormset(request.POST or None, instance=post)
     if request.method == 'POST' and form.is_valid() and formset.is_valid():
+        post.save()
         form.save()
         formset.save()
-        # 編集ページを再度表示
-        return redirect('app:update_post', pk=pk)
+        return redirect('nippo:nippo_detail', pk=pk)
 
     context = {
         'form': form,
         'formset': formset
     }
 
-    return render(request, 'app/post_form.html', context)
+    return render(request, 'nippo/nippo_form.html', context)
+
+
+class NippoListView(LoginRequiredMixin, ListView):
+    template_name = 'nippo/nippo_list.html'
+    model = Nippo
+
+
+class NippoMyListView(LoginRequiredMixin, ListView):
+    template_name = 'nippo/nippo_mylist.html'
+    model = Nippo
+
+
+class NippoDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'nippo/nippo_detail.html'
+    model = Nippo

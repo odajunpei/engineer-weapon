@@ -16,8 +16,8 @@ class Nippo(models.Model):
         User, verbose_name="投稿者", related_name="nippo_user", on_delete=models.PROTECT, null=True, blank=True)
     title = models.CharField(blank=False, null=False, max_length=200)
     date = models.DateTimeField('日付', default=timezone.now)
-    created_at = models.DateTimeField('投稿日', default=timezone.now)
-    updated_at = models.DateTimeField('更新日')
+    created_at = models.DateTimeField('投稿日', auto_now_add=True)
+    updated_at = models.DateTimeField('更新日', auto_now=True)
 
     def __str__(self):
         return self.title
