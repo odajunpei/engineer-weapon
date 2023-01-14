@@ -1,4 +1,16 @@
 from django.contrib import admin
 from nippo.models import *
 
-# admin.site.register(Nippo)
+
+class NippoDetailInline(admin.TabularInline):
+    model = NippoDetail
+    extra = 8
+
+
+class NippoAdmin(admin.ModelAdmin):
+    inlines = [NippoDetailInline]
+
+
+admin.site.register(Nippo, NippoAdmin)
+admin.site.register(NippoDetail)
+admin.site.register(Time)

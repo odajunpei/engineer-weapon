@@ -1,20 +1,48 @@
-<!-- {% extends 'base/base.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 {% block page-title %}
 日報投稿
 <small></small>
 {% endblock %}
 {% block content %}
-<form action="" method="post">
-  <div class="row">
-    {% for form in formset %}
-    <div class="col-sm-4">
-      {{ form.as_p }}
-    </div>
-    {% endfor %}
-  </div>
-  {{ formset.management_form }}
+<form action="" method="post" enctype="multipart/form-data">
+  <h2>日報</h2>
+  <table>
+    <tr>
+      <th>タイトル</th>
+      <td>{{ form.title }}</td>
+    </tr>
+    <tr>
+      <th>日時</th>
+      <td>{{ form.date }}</td>
+    </tr>
+    <tr>
+      <th>編集日</th>
+      <td>{{ form.updated_at }}</td>
+    </tr>
+  </table>
+  <table>
+    <thead>
+      <th>時間</th>
+      <th>予定</th>
+      <th>実績</th>
+    </thead>
+    <tbody>
+      {{ formset.management_form }}
+      {% for file_form in formset %}
+      <tr>
+        <th>{{ file_form.time }}</th>
+        <td>{{ file_form.plan }}</td>
+        <td>{{ file_form.actual }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <hr>
+
+
   {% csrf_token %}
   <button type="submit" class="btn btn-primary">送信</button>
 </form>
-{% endblock %} -->
+{% endblock %}
