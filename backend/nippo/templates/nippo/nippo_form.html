@@ -20,16 +20,16 @@
       </table>
       <table>
         <thead>
-          <th>時間</th>
-          <th>予定</th>
-          <th>実績</th>
+          <th class="text-center">時間</th>
+          <th class="text-center">予定</th>
+          <th class="text-center">実績</th>
         </thead>
         <tbody>
           {{ formset.management_form }}
           {% for file_form in formset %}
           {{ file_form.errors }}
           <tr>
-            <th>{{ file_form.time }}</th>
+            <td>{{ file_form.time }}{{ file_form.id }}</td>
             <td>{{ file_form.plan }}</td>
             <td>{{ file_form.actual }}</td>
           </tr>

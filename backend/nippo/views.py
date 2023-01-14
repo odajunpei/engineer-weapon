@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import FileFormset, NippoCreateForm
 import os
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
@@ -18,7 +19,6 @@ def nippo(request):
     if request.method == 'POST' and form.is_valid():
         post = form.save(commit=False)
         post.user = request.user
-        # 今回はファイルなのでrequest.FILESが必要
         formset = FileFormset(request.POST, instance=post)
         if formset.is_valid():
             post.save()
@@ -38,11 +38,12 @@ def nippo(request):
 
 
 def update(request, pk):
-    post = get_object_or_404(Nippo, pk=pk)
-    form = NippoCreateForm(request.POST or None, instance=post)
-    formset = FileFormset(request.POST or None, instance=post)
+    nippo = get_object_or_404(Nippo, pk=pk)
+    form = NippoCreateForm(request.POST or None,
+                           instance=request.user and nippo)
+    formset = FileFormset(request.POST or None,
+                          instance=nippo)
     if request.method == 'POST' and form.is_valid() and formset.is_valid():
-        post.save()
         form.save()
         formset.save()
         return redirect('nippo:nippo_detail', pk=pk)
@@ -53,6 +54,15 @@ def update(request, pk):
     }
 
     return render(request, 'nippo/nippo_form.html', context)
+
+# class NippoUpdateView(LoginRequiredMixin, UpdateView):
+#     template_name = 'nippo/nippo_form.html'
+#     model = Nippo
+#     form_class = NippoCreateForm
+#     formset_class = FileFormset
+
+#     def get_success_url(self):
+#         return reverse_lazy("nippo:nippo_detail", kwargs={'pk': self.object.pk})
 
 
 class NippoListView(LoginRequiredMixin, ListView):

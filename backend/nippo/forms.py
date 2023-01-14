@@ -5,7 +5,7 @@ from .models import NippoDetail, Nippo
 class NippoCreateForm(forms.ModelForm):
     class Meta:
         model = Nippo
-        fields = '__all__'
+        fields = ('date', 'title')
 
 
 # class NippoDetailCreateForm(forms.ModelForm):
