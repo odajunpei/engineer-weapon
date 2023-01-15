@@ -10,6 +10,7 @@ class CaseForm(forms.ModelForm):
         widgets = {
             'body': SummernoteWidget(),
             'status': forms.CheckboxSelectMultiple,
+            'member': forms.CheckboxSelectMultiple,
         }
 
 

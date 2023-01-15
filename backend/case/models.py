@@ -43,6 +43,9 @@ class Case(models.Model):
         'テスト環境ログインパスワード', null=True, blank=True, max_length=100)
     shop = models.ForeignKey(
         Shop, verbose_name="取引先企業", related_name="case_shop", on_delete=models.PROTECT, null=True, blank=True)
+    member = models.ManyToManyField(
+        User, verbose_name="メンバー", related_name="case_member", null=True, blank=True
+    )
 
     def __str__(self):
         return self.title

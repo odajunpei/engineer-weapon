@@ -33,6 +33,10 @@
             <td>{{ form.title }}</td>
           </tr>
           <tr>
+            <th><label>メンバー</label></th>
+            <td class="checkbox">{{ form.member }}</td>
+          </tr>
+          <tr>
             <th><label>テストurl1</label></th>
             <td>{{ form.url1 }}</td>
           </tr>
@@ -51,14 +55,6 @@
           <tr>
             <th><label>公開する</label></th>
             <td>{{ form.release }}</td>
-          </tr>
-          <tr>
-            <th><label>投稿日</label></th>
-            <td>{{ form.created_at }}</td>
-          </tr>
-          <tr>
-            <th><label>更新日</label></th>
-            <td>{{ form.updated_at }}</td>
           </tr>
         </tbody>
       </table>

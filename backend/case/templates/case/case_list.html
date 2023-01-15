@@ -10,19 +10,21 @@
     <table>
       <tbody>
         <tr>
+          {% if case.shop %}
           <th>取引先</th>
+          {% endif %}
           <th>案件名</th>
           <th>ステータス</th>
+          <th>メンバー</th>
           <th>作成日</th>
           <th>更新日</th>
         </tr>
         {% for case in case_list %}
         {% if case.release %}
+        {% if user in case.member.all or case.user == user %}
         <tr>
           {% if case.shop %}
           <td><a href="{% url 'case:shop_list' case.shop.pk %}">{{ case.shop }}</a></td>
-          {% else %}
-          未登録
           {% endif %}
           {% if case.title %}
           <td><a href="{% url 'case:case_detail' case.pk %}">{{ case.title }}</a></td>
@@ -34,9 +36,17 @@
               {% endfor %}
             </div>
           </td>
+          <td>
+            <div class="category-list">
+              {% for member in case.member.all %}
+              <p>{{ member.username }}</p>
+              {% endfor %}
+            </div>
+          </td>
           <td>{{ case.created_at }}</td>
           <td>{{ case.updated_at }}</td>
         </tr>
+        {% endif %}
         {% endif %}
         {% endfor %}
       </tbody>
