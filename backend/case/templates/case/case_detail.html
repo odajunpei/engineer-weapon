@@ -9,7 +9,7 @@
   <div class="article-detail">
     <p class="left">{{ case.created_at }}</p>
     {% if case.shop %}
-    <p class="left">{{ case.shop }}</p>
+    <p class="left"><a href="{% url 'case:shop_list' case.shop.pk %}">{{ case.shop }}</a></p>
     {% else %}
     未登録
     {% endif %}

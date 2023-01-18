@@ -26,5 +26,9 @@ class NippoCreateForm(forms.ModelForm):
 
 FileFormset = forms.inlineformset_factory(
     Nippo, NippoDetail, fields='__all__',
-    extra=8, max_num=8, can_delete=False
+    extra=8, max_num=8, can_delete=False,
+    widgets={
+        'plan': forms.Textarea(attrs={'rows': 4, 'cols': 10}),
+        'actual': forms.Textarea(attrs={'rows': 4, 'cols': 10}),
+    }
 )

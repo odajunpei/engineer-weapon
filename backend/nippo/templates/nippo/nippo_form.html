@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
 <div class="article">
-  <div class="article-form">
+  <div class="article-form nippo-form">
     <form action="" method="post" enctype="multipart/form-data">
       <table>
         <tr>
@@ -37,7 +37,7 @@
         </tbody>
       </table>
       {% csrf_token %}
-      <button type="submit" class="btn btn-primary">送信</button>
+      <button type="submit" class="submit-btn">送信</button>
     </form>
   </div>
 </div>
