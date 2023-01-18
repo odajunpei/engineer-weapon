@@ -10,9 +10,6 @@
     <table>
       <tbody>
         <tr>
-          {% if case.shop %}
-          <th>取引先</th>
-          {% endif %}
           <th>案件名</th>
           <th>ステータス</th>
           <th>メンバー</th>
@@ -23,9 +20,6 @@
         {% if case.release %}
         {% if user.is_admin %}
         <tr>
-          {% if case.shop %}
-          <td><a href="{% url 'case:shop_list' case.shop.pk %}">{{ case.shop }}</a></td>
-          {% endif %}
           {% if case.title %}
           <td><a href="{% url 'case:case_detail' case.pk %}">{{ case.title }}</a></td>
           {% endif %}
