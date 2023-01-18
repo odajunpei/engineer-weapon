@@ -9,6 +9,13 @@
 
 <small>{{ case.title }}</small>
 {% endblock %}
+{% block pankuzu %}
+{% if case %}
+案件更新
+{% else %}
+案件作成
+{% endif %}
+{% endblock %}
 {% block content %}
 <div class="article">
   <div class="article-form">
@@ -26,7 +33,7 @@
           </tr>
           <tr>
             <th><label>ステータス<br>(進捗投稿後チェック)</label></th>
-            <td class="checkbox">{{ form.status }}</td>
+            <td>{{ form.status }}</td>
           </tr>
           <tr>
             <th><label>案件名</label></th>
@@ -34,7 +41,7 @@
           </tr>
           <tr>
             <th><label>メンバー</label></th>
-            <td class="checkbox">{{ form.member }}</td>
+            <td>{{ form.member }}</td>
           </tr>
           <tr>
             <th><label>テストurl1</label></th>

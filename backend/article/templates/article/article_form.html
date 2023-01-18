@@ -8,6 +8,13 @@
 {% endif %}
 <small>{{ article.title }}</small>
 {% endblock %}
+{% block pankuzu %}
+{% if article %}
+記事更新
+{% else %}
+記事作成
+{% endif %}
+{% endblock %}
 {% block content %}
 <div class="article">
   <div class="article-form">

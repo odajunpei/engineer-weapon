@@ -48,13 +48,23 @@
             width: calc(100% - 250px);
             text-align: left;
             ul{
+              display: flex;
               width: 90%;
               margin-block-start: 0;
               margin-block-end: 0;
               padding-inline-start: 0px;
+              flex-wrap: wrap;
               li{
                 list-style: none;
-                width: 100%;
+                width: fit-content;
+                label{
+                  display: flex;
+                  margin: 20px;
+                  input{
+                    margin-right: 10px;
+                    width: 16px;
+                  }
+                }
               }
             }
             select,

@@ -8,6 +8,13 @@
 {% endif %}
 <small></small>
 {% endblock %}
+{% block pankuzu %}
+{% if detail %}
+進捗投稿更新
+{% else %}
+進捗投稿作成
+{% endif %}
+{% endblock %}
 {% block content %}
 <div class="article">
   <div class="article-form">

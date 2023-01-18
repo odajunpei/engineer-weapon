@@ -8,6 +8,13 @@
 {% endif %}
 <small>{{ category.title }}</small>
 {% endblock %}
+{% block pankuzu %}
+{% if category %}
+カテゴリ更新
+{% else %}
+カテゴリ作成
+{% endif %}
+{% endblock %}
 {% block content %}
 <div class="article">
   <div class="article-form">

@@ -1,8 +1,19 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block page-title %}
+{% if nippo %}
+日報更新
+{% else %}
 日報投稿
+{% endif %}
 <small></small>
+{% endblock %}
+{% block pankuzu %}
+{% if nippo %}
+日報更新
+{% else %}
+日報投稿
+{% endif %}
 {% endblock %}
 {% block content %}
 <div class="article">

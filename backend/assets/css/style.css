@@ -625,6 +625,7 @@ input:focus :-ms-input-placeholder {
   text-align: left;
 }
 .article .article-form table tr td ul {
+  display: flex;
   width: 90%;
   -webkit-margin-before: 0;
           margin-block-start: 0;
@@ -632,10 +633,21 @@ input:focus :-ms-input-placeholder {
           margin-block-end: 0;
   -webkit-padding-start: 0px;
           padding-inline-start: 0px;
+  flex-wrap: wrap;
 }
 .article .article-form table tr td ul li {
   list-style: none;
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.article .article-form table tr td ul li label {
+  display: flex;
+  margin: 20px;
+}
+.article .article-form table tr td ul li label input {
+  margin-right: 10px;
+  width: 16px;
 }
 .article .article-form table tr td select,
 .article .article-form table tr td textarea,
