@@ -14,3 +14,7 @@ vi settings.py
 settings.pyのALLOWED_HOSTをIPアドレスにする
 http://49.212.153.160:8000/
 http://engineer-weapon.work:8000/
+
+#docker-daemonが動かないとき
+sudo service docker stop
+sudo service docker start
