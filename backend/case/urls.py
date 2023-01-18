@@ -4,6 +4,7 @@ app_name = 'case'
 
 urlpatterns = [
     path('', views.CaseListView.as_view(), name='case_list'),
+    path('mylist/', views.CaseMyListView.as_view(), name='case_mylist'),
     path('create', views.CaseCreateView.as_view(),
          name="case_create"),
     path('<int:pk>', views.CaseDetailView.as_view(),

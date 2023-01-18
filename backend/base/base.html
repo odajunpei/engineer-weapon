@@ -386,7 +386,11 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{% url 'case:case_list' %}"><i class="fa fa-circle-o"></i>自分の案件一覧</a>
+              {% if user.is_admin %}
+              <li><a href="{% url 'case:case_list' %}"><i class="fa fa-circle-o"></i>全案件一覧(管理者)</a>
+              </li>
+              {% endif %}
+              <li><a href="{% url 'case:case_mylist' %}"><i class="fa fa-circle-o"></i>自分の案件一覧</a>
               </li>
               <li><a href="{% url 'case:case_create' %}"><i class="fa fa-circle-o"></i>案件投稿</a>
               </li>
@@ -455,14 +459,6 @@
       </section>
       <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
-      </div>
-      <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-      reserved.
-    </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

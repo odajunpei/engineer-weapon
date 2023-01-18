@@ -21,7 +21,7 @@
         </tr>
         {% for case in case_list %}
         {% if case.release %}
-        {% if user.is_admin %}
+        {% if user in case.member.all or case.user == user %}
         <tr>
           {% if case.shop %}
           <td><a href="{% url 'case:shop_list' case.shop.pk %}">{{ case.shop }}</a></td>

@@ -78,3 +78,9 @@ class NippoMyListView(LoginRequiredMixin, ListView):
 class NippoDetailView(LoginRequiredMixin, DetailView):
     template_name = 'nippo/nippo_detail.html'
     model = Nippo
+
+
+class NippoDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = 'nippo/nippo_delete.html'
+    model = Nippo
+    success_url = reverse_lazy("nippo:nippo_list")

@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page-title %}
+日報削除
+<small></small>
+{% endblock %}
+{% block content %}
+<!--記事一覧-->
+<section class="is-list common gallery">
+  <div class="is-list-content max-extend-narrow">
+    <div class="is-detail-title">
+      <h1>日報を削除する</h1>
+    </div>
+    <p>本当に削除してよろしいですか？</p>
+    <form action="" method="POST">
+      <button type="submit" class="is-delete-btn">削除する</button>
+      {% csrf_token %}
+    </form>
+    <a href="#" class="" style="display:block; text-align: center; margin-top: 40px;"
+      onClick="history.back(); return false;">前のページにもどる</a>
+  </div>
+</section>
+{% endblock %}

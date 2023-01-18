@@ -20,6 +20,11 @@ class CaseListView(LoginRequiredMixin, ListView):
     model = Case
 
 
+class CaseMyListView(LoginRequiredMixin, ListView):
+    template_name = "case/case_mylist.html"
+    model = Case
+
+
 class CaseDetailView(LoginRequiredMixin, DetailView):
     template_name = "case/case_detail.html"
     model = Case

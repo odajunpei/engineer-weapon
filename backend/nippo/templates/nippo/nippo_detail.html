@@ -29,9 +29,9 @@
     {% if nippo.user == user %}
     <a href="{% url 'nippo:nippo_update' nippo.pk %}"
       style="display:block; text-align: center; margin-top: 40px;">編集</a>
+    <a href="{% url 'nippo:nippo_delete' nippo.pk %}" style="margin-top: 20px;">削除</a><br>
     {% endif %}
-    <a href="#" class="" style="display:block; text-align: center;"
-      onClick="history.back(); return false;">前のページにもどる</a>
+    <a href="#" class="" style="display:block; text-align:center;" onClick="history.back(); return false;">前のページにもどる</a>
   </div>
 </div>
 {% endblock %}
