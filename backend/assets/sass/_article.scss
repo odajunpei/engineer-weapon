@@ -35,9 +35,11 @@
   .article-form{
     text-align: center;
     margin: auto;
-    width: 90%;
+    width: 100%;
     table{
-      width: 100%;
+      width: 970px;
+      text-align: center;
+      margin: auto;
         tr{
           margin: 20px;
           th{
@@ -45,11 +47,10 @@
           }
           td{
             padding: 10px;
-            width: calc(100% - 250px);
+            width: 720px;
             text-align: left;
             ul{
               display: flex;
-              width: 90%;
               margin-block-start: 0;
               margin-block-end: 0;
               padding-inline-start: 0px;
@@ -70,7 +71,7 @@
             select,
             textarea,
             input{
-              width: 90%;
+              width: 100%;
               padding: 10px;
             }
             #id-release{

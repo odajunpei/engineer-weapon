@@ -608,10 +608,12 @@ input:focus :-ms-input-placeholder {
 .article .article-form {
   text-align: center;
   margin: auto;
-  width: 90%;
+  width: 100%;
 }
 .article .article-form table {
-  width: 100%;
+  width: 970px;
+  text-align: center;
+  margin: auto;
 }
 .article .article-form table tr {
   margin: 20px;
@@ -621,12 +623,11 @@ input:focus :-ms-input-placeholder {
 }
 .article .article-form table tr td {
   padding: 10px;
-  width: calc(100% - 250px);
+  width: 720px;
   text-align: left;
 }
 .article .article-form table tr td ul {
   display: flex;
-  width: 90%;
   -webkit-margin-before: 0;
           margin-block-start: 0;
   -webkit-margin-after: 0;
@@ -652,7 +653,7 @@ input:focus :-ms-input-placeholder {
 .article .article-form table tr td select,
 .article .article-form table tr td textarea,
 .article .article-form table tr td input {
-  width: 90%;
+  width: 100%;
   padding: 10px;
 }
 .article .article-form table tr td #id-release {
