@@ -19,16 +19,13 @@
 <div class="article">
   <div class="article-form nippo-form">
     <form action="" method="post" enctype="multipart/form-data">
-      <table>
-        <tr>
-          <th>タイトル</th>
-          <td>{{ form.title }}</td>
-        </tr>
-        <tr>
-          <th>日時</th>
-          <td>{{ form.date }}</td>
-        </tr>
-      </table>
+      <div class="form-content">
+        <p class="title">タイトル</p>
+        <p class="form_content">{{ form.title }}</p>
+        <p class="title">日時</p>
+        <p class="form_content">{{ form.date }}</p>
+      </div>
+      <div class="form-content">
       <table>
         <thead>
           <th class="text-center">時間</th>
@@ -47,6 +44,7 @@
           {% endfor %}
         </tbody>
       </table>
+      </div>
       {% csrf_token %}
       <button type="submit" class="submit-btn">送信</button>
     </form>

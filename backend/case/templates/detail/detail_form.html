@@ -20,35 +20,21 @@
   <div class="article-form">
     <form method="POST" class="is-form" enctype="multipart/form-data">
       {% csrf_token %}
-      <table>
-        <tbody>
-          <tr>{{ form.errors }}</tr>
-          <tr>
-            <th><label>ステータス</label></th>
-            <td class="checkbox">{{ form.status }}</td>
-          </tr>
-          <tr>
-            <th><label>タイトル</label></th>
-            <td>{{ form.title }}</td>
-          </tr>
-          <tr>
-            <th><label>本文</label></th>
-            <td>{{ form.body }}</td>
-          </tr>
-          <tr>
-            <th><label>公開する</label></th>
-            <td>{{ form.release }}</td>
-          </tr>
-          <tr>
-            <th><label>投稿日</label></th>
-            <td>{{ form.created_at }}</td>
-          </tr>
-          <tr>
-            <th><label>更新日</label></th>
-            <td>{{ form.updated_at }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="form-content">
+        {{ form.errors }}
+        <p class="title">ステータス</p>
+        <p class="form_content checkbox">{{ form.status }}</p>
+        <p class="title">タイトル</p>
+        <p class="form_content">{{ form.title }}</p>
+        <p class="title">本文</p>
+        <p class="form_content">{{ form.body }}</p>
+        <p class="title"></p>公開する</p>
+        <p class="form_content">{{ form.release }}</p>
+        <p class="title">投稿日</p>
+        <p class="form_content">{{ form.created_at }}</p>
+        <p class="title">更新日</p>
+        <p class="form_content">{{ form.updated_at }}</p>
+      </div>
       <button type="submit" class="submit-btn">送信</button>
     </form>
   </div>

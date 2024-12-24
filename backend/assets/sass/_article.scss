@@ -8,6 +8,7 @@
       width: 80%;
       tr{
         border: 1px solid #000;
+        background-color: #fff;
         th{
           border: 1px solid #000;
           text-align: center;
@@ -36,57 +37,60 @@
     text-align: center;
     margin: auto;
     width: 100%;
-    table{
-      width: 970px;
+    .form-content{
+      width: 100%;
+      max-width: 970px;
       text-align: center;
       margin: auto;
-        tr{
-          margin: 20px;
-          th{
-            width: 250px;
-          }
-          td{
-            padding: 10px;
-            width: 720px;
-            text-align: left;
-            ul{
-              display: flex;
-              margin-block-start: 0;
-              margin-block-end: 0;
-              padding-inline-start: 0px;
-              flex-wrap: wrap;
-              li{
-                list-style: none;
-                width: fit-content;
-                label{
-                  display: flex;
-                  margin: 20px;
-                  input{
-                    margin-right: 10px;
-                    width: 16px;
-                  }
-                }
-              }
-            }
-            select,
-            textarea,
+      table{
+        width: 100%;
+      }
+      .title{
+        width: 250px;
+        text-align: left;
+        font-weight: 600;
+      }
+      .form_content{
+        width: 100%;
+        text-align: left;
+      }
+      ul{
+        display: flex;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        padding-inline-start: 0px;
+        flex-wrap: wrap;
+        li{
+          list-style: none;
+          width: fit-content;
+          label{
+            display: flex;
+            margin: 20px;
             input{
-              width: 100%;
-              padding: 10px;
-            }
-            #id-release{
-              text-align: left;
+              margin-right: 10px;
+              width: 16px;
             }
           }
-          .checkbox{
-            ul{
-              display: block;
-              margin:auto;
-              li{
-                width: fit-content;
-              }
-            }
-          }
+        }
+      }
+      select,
+      textarea,
+      input{
+        width: 100%;
+        padding: 10px;
+      }
+      input[type=checkbox]{
+        text-align: left;
+        width: 13px;
+      }
+    }
+    .checkbox{
+      ul{
+        display: block;
+        margin: auto;
+        li{
+          width: fit-content;
+        }
       }
     }
   }
