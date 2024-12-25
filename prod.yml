@@ -19,7 +19,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      DOMAINS: ""
+      DOMAINS: "engineer-weapon.work"
       STAGE: "production"
       # FORCE_RENEW: 'true'
       CLIENT_MAX_BODY_SIZE: 100M
